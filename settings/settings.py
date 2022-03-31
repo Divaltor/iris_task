@@ -140,3 +140,10 @@ AMQP_HOST = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 AMQP_PORT = os.getenv('RABBITMQ_PORT', 5672)
 AMQP_USER = os.getenv('RABBITMQ_USER', '')
 AMQP_PASSWORD = os.getenv('RABBITMQ_PASSWORD')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer'
+    ]
+}

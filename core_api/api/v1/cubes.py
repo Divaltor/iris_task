@@ -55,7 +55,7 @@ class CalculateCubeStackAPI(GenericAPIView):
     def post(self, request: Request) -> Response:
         raw_cubes = request.data.get('cubes')
 
-        if not raw_cubes:
+        if not raw_cubes or not isinstance(raw_cubes, list):
             return Response(
                 data={
                     'error': 'Passed data must be non empty array with numbers'
@@ -65,7 +65,7 @@ class CalculateCubeStackAPI(GenericAPIView):
 
         try:
             validated_cubes = ConvertCubesTask.delay(raw_cubes).get()
-        except ValidationError as ex:
+        except ValidationError:
             return Response(
                 data={
                     'error': 'Passed data has invalid values (not numbers)'
