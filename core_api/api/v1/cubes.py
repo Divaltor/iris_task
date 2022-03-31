@@ -50,11 +50,13 @@ from core_api.tasks.convert_cube import ConvertCubesTask
     )
 )
 class CalculateCubeStackAPI(GenericAPIView):
+    """API for calculating if cubes can be stacked."""
 
     # noinspection PyMethodMayBeStatic
     def post(self, request: Request) -> Response:
         raw_cubes = request.data.get('cubes')
 
+        # Check if we get valid data, not trash like {}, 123 and etc.
         if not raw_cubes or not isinstance(raw_cubes, list):
             return Response(
                 data={
