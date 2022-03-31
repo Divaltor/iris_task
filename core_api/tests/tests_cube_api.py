@@ -66,7 +66,9 @@ class TestsCubesAPI:
             [10, 10, 10],
             [0],
             [0, 1, 1],
-            [15, 12, 6, 8, 13, 14]
+            [15, 12, 6, 8, 13, 14],
+            [1, 2, 3, 4, 5],
+            [5, 4, 3, 2, 1]
         ]
     )
     def test_api_with_stacked_cubes(self, api: APIClient, api_data: Any):
